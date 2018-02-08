@@ -10,7 +10,12 @@ $(document).ready(function() {
  */
 function initializePage() {
 	console.log("Javascript connected!");
+
+	// Add any additional listeners here
+	// example: $("#div-id").click(functionToCall);
+	$(".name").click(projectClick);
 }
+
 
 function anagrammedName(name) {
 	// Thanks, Internet Anagram Server!
@@ -43,4 +48,14 @@ function anagrammedName(name) {
 		console.log(name + " not known for anagramming.");
 		return name;
 	}
+}
+
+function projectClick(e) { 
+	console.log($(this).text());
+    // prevent the page from reloading      
+    e.preventDefault();
+    // In an event handler, $(this) refers to      
+    // the object that triggered the event      
+    var newName = anagrammedName($(this).text());
+    $(this).text(newName);
 }
